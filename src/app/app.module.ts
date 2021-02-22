@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
+import { ListComponent } from './components/list/list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { reducers } from './reducers';
     ProjectsComponent,
     ActionsComponent,
     InboxComponent,
-    TodoEntryComponent
+    TodoEntryComponent,
+    ListComponent
   ],
   imports: [
     ...MaterialModules,

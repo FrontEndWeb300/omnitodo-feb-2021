@@ -31,3 +31,9 @@ export const selectInboxItems = createSelector(
   selectTodoItemsListModel,
   items => items.filter(item => !item.dueDate && !item.project)
 );
+
+
+export const selectNumberOfInboxItems = createSelector(
+  selectInboxItems,
+  items => items.length
+);
