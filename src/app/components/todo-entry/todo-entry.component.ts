@@ -35,7 +35,7 @@ export class TodoEntryComponent implements OnInit {
       const itemToAdd: TodoCreate = {
         name: this.form.get('name').value,
         project: this.form.get('project').value,
-        dueDate: new Date(this.form.get('dueDate').value).toISOString()
+        dueDate: this.form.get('dueDate').value ? new Date(this.form.get('dueDate').value).toISOString() : null,
       };
       this.store.dispatch(actions.todoItemAdded({ item: itemToAdd }));
       this.bottomSheetRef.dismiss();
