@@ -13,7 +13,10 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { TodoEntryComponent } from './components/todo-entry/todo-entry.component';
-import { ReactiveFormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers } from './reducers';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,12 +29,14 @@ import { ReactiveFormsModule } from "@angular/forms";
     TodoEntryComponent
   ],
   imports: [
+    ...MaterialModules,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
     ReactiveFormsModule,
-    ...MaterialModules
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
