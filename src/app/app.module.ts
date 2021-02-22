@@ -12,7 +12,8 @@ import { ForecastComponent } from './components/forecast/forecast.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { InboxComponent } from './components/inbox/inbox.component';
-
+import { TodoEntryComponent } from './components/todo-entry/todo-entry.component';
+import { ReactiveFormsModule } from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +22,15 @@ import { InboxComponent } from './components/inbox/inbox.component';
     ForecastComponent,
     ProjectsComponent,
     ActionsComponent,
-    InboxComponent
+    InboxComponent,
+    TodoEntryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+    ReactiveFormsModule,
     ...MaterialModules
   ],
   providers: [],
