@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private showInbox(): void {
-    const dlg = this.dialog.open(ListComponent, { disableClose: false, data: { filter: 'inbox' } });
+    const dlg = this.dialog.open(ListComponent, { disableClose: true, data: { filter: 'inbox' } });
     dlg.afterClosed().subscribe(_ => this.router.navigate(['dashboard']));
   }
 }
