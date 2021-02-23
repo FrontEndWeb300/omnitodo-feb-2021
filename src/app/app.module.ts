@@ -21,6 +21,8 @@ import { ListComponent } from './components/list/list.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './effects/auth.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { HttpClientModule } from '@angular/common/http';
     LayoutModule,
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
