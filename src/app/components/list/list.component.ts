@@ -3,7 +3,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { TodoListItem } from 'src/app/models';
-import { AppState, selectInboxItems } from 'src/app/reducers';
+import { AppState, selectInboxItems, selectTodosForProject } from 'src/app/reducers';
 import * as actions from '../../actions/todo-item.actions';
 
 @Component({
@@ -27,7 +27,7 @@ export class ListComponent implements OnInit {
         break;
       }
       case 'project': {
-        // TODO: use the selector we will write after lunch
+        this.list$ = this.store.select(selectTodosForProject, { project: this.data.id });
       }
       default: {
         // this.close();

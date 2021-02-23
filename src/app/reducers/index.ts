@@ -53,3 +53,12 @@ export const selectProjectList = createSelector(
       numberOfTodos: todos.filter(todo => todo.project === project.name).length
     } as models.ProjectListItem));
   });
+
+// Given a project, reutrn a models.ProjectLitItem[] of those todos.
+export const selectTodosForProject = createSelector(
+  selectAllTodoArray,
+  (todos, props: { project: string }) => {
+    return todos.filter(todo => todo.project === props.project)
+      .map(todo => todo as models.TodoListItem);
+  }
+);
