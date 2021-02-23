@@ -19,6 +19,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './reducers';
 import { ListComponent } from './components/list/list.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './services/auth.guard';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
   imports: [
     ...MaterialModules,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
@@ -42,7 +45,7 @@ import { LoginComponent } from './components/login/login.component';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument()
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
