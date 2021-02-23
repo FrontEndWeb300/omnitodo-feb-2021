@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   constructor(
     private store: Store<AppState>,
     private dialogRef: MatDialogRef<ListComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { filter: string }
+    @Inject(MAT_DIALOG_DATA) public data: { filter: string, id: string }
   ) { }
 
   ngOnInit(): void {
@@ -26,9 +26,11 @@ export class ListComponent implements OnInit {
         this.list$ = this.store.select(selectInboxItems);
         break;
       }
-
+      case 'project': {
+        // TODO: use the selector we will write after lunch
+      }
       default: {
-        this.close();
+        // this.close();
       }
     }
   }
