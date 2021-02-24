@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { loadProjects } from 'src/app/actions/project.actions';
 import { loadTodos } from 'src/app/actions/todo-item.actions';
 import { TodoListItem } from 'src/app/models';
 import { AppState, selectInboxItems } from 'src/app/reducers';
@@ -23,6 +24,7 @@ export class DashboardComponent implements OnInit {
   ) {
 
     store.dispatch(loadTodos());
+    store.dispatch(loadProjects());
   }
 
   ngOnInit(): void {

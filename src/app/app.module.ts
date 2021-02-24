@@ -26,6 +26,8 @@ import { AuthEffects } from './effects/auth.effects';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { TodosDataService } from './services/todos-data.service';
 import { TodosEffects } from './effects/todos.effects';
+import { ProjectsDataService } from './services/projects-data.service';
+import { ProjectsEffects } from './effects/projects.effects';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,10 +51,11 @@ import { TodosEffects } from './effects/todos.effects';
     ReactiveFormsModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
-    EffectsModule.forRoot([AuthEffects, TodosEffects])
+    EffectsModule.forRoot([AuthEffects, TodosEffects, ProjectsEffects])
   ],
   providers: [
     AuthGuard,
+    ProjectsDataService,
     TodosDataService,
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
