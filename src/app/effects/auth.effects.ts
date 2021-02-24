@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment'; // NOTE: Only this one ever. never the.prod or whatever.
 import * as authActions from '../actions/auth.actions';
-import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
 @Injectable()
@@ -62,6 +62,38 @@ export class AuthEffects {
     )
     , { dispatch: false });
 
+
+  logoutSendsToLogin$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.logOutRequested),
+      tap(() => this.router.navigate(['login']))
+    )
+    , { dispatch: false });
+
+
+  checkForCredentials$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(authActions.checkForCredentials),
+      map(() => {
+        // read the token and stuff. If it is expired or not there, return null
+        const expire = localStorage.getItem('token-expire');
+        const username = localStorage.getItem('username');
+        const token = localStorage.getItem('token');
+        if (expire && username && token) {
+          const expireDate = new Date(JSON.parse(expire));
+          if (expireDate > new Date()) {
+            return ({ expire, username, token });
+          } else {
+            return null;
+          }
+        } else {
+          return null;
+        }
+      }),
+      filter((t: { expire: string; username: string, token: string }) => t !== null), // stop here if it isn't a good set of credentials
+      map(t => authActions.loginSucceeded({ username: t.username, token: t.token }))
+    )
+    , { dispatch: true });
 
   constructor(
     private actions$: Actions,

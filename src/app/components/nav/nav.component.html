@@ -9,7 +9,7 @@
     <button *ngIf="isLoggedIn$ | async"
             (click)="logOut()"
             mat-button>Log Out</button>
-    <mat-nav-list>
+    <mat-nav-list *ngIf="isLoggedIn$ | async">
       <a mat-list-item
          href="#">Admin</a>
       <a mat-list-item
