@@ -72,3 +72,9 @@ export const selectIsLoggedIn = createSelector(
   selectAuthBranch,
   b => b.isLoggedIn
 );
+
+// s => s.auth.token
+export const selectAuthToken = createSelector(
+  selectAuthBranch,
+  b => b.token
+);
