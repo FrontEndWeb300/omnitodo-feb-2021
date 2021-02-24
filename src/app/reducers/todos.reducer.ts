@@ -32,6 +32,7 @@ const reducerFunction = createReducer(
     const tempState = adapter.removeOne(action.oldId, state);
     return adapter.addOne(action.payload, tempState);
   }),
+  on(actions.todoItemAddFailure, (s, a) => adapter.removeOne(a.payload.id, s)),
   on(actions.todoItemAdded, (state, action) => adapter.addOne(action.payload, state)),
   on(actions.todoItemMarkedComplete, actions.todoItemMarkedIncomplete,
     (state, action) => adapter.updateOne({

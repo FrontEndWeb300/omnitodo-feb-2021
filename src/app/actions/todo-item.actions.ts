@@ -13,7 +13,7 @@ export const todoItemAdded = createAction(
     payload: {
       ...item,
       completed: false,
-      id: 'T' + fakeId++
+      id: 'TEMP' + fakeId++
     } as TodoEntity
   })
 );

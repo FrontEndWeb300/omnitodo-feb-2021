@@ -32,7 +32,12 @@ const { selectAll: selectAllProjectArray } = fromProjects.adapter.getSelectors(s
 
 const selectTodoItemsListModel = createSelector(
   selectAllTodoArray,
-  (todos) => todos as models.TodoListItem[]
+  (todos) => todos.map(todo => {
+    return {
+      ...todo,
+      isSaved: !todo.id.startsWith('TEMP')
+    } as models.TodoListItem;
+  })
 );
 
 // 4. What your components need.
