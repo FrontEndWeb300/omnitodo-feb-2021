@@ -11,7 +11,7 @@
             mat-button>Log Out</button>
     <mat-nav-list *ngIf="isLoggedIn$ | async">
       <a mat-list-item
-         href="#">Admin</a>
+         [routerLink]="['admin']">Admin</a>
       <a mat-list-item
          href="#">Link 2</a>
       <a mat-list-item

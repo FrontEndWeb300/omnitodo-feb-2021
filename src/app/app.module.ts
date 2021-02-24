@@ -28,6 +28,7 @@ import { TodosDataService } from './services/todos-data.service';
 import { TodosEffects } from './effects/todos.effects';
 import { ProjectsDataService } from './services/projects-data.service';
 import { ProjectsEffects } from './effects/projects.effects';
+import { AdminModule } from './features/admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
