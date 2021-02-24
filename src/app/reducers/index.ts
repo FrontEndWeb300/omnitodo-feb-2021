@@ -65,7 +65,7 @@ export const selectProjectList = createSelector(
 
 // Given a project, reutrn a models.ProjectLitItem[] of those todos.
 export const selectTodosForProject = createSelector(
-  selectAllTodoArray,
+  selectTodoItemsListModel,
   (todos, props: { project: string }) => {
     return todos.filter(todo => todo.project === props.project)
       .map(todo => todo as models.TodoListItem);
